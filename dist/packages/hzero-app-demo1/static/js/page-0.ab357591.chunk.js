@@ -1,0 +1,1 @@
+(window["webpackJsonppackages_hzero_app_demo1_name_"]=window["webpackJsonppackages_hzero_app_demo1_name_"]||[]).push([[0],{6:function(e,a,n){"use strict";n.r(a);var o=n(1),p=n.n(o),_=function(){return p.a.createElement("div",null,"HelloWorldPage")};a["default"]=_}}]);
