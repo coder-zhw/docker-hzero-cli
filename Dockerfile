@@ -5,4 +5,4 @@ RUN apk add --no-cache \
   curl \
   git
 
-RUN npm install -g hzero-cli --registry http://nexus.saas.hand-china.com/content/groups/hzero-npm-group
+RUN npm install -g yarn && npm install -g hzero-cli --registry http://nexus.saas.hand-china.com/content/groups/hzero-npm-group
