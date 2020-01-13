@@ -2,7 +2,10 @@ FROM gcr.io/kaniko-project/executor:v0.9.0
 FROM node:12.14.1-stretch
 COPY --from=0 /kaniko/executor /usr/local/bin/kaniko
 # Modify timezone
-ENV TZ=Asia/Shanghai
+ENV TZ=Asia/Shanghai \
+  HELM_VERSION="v2.14.1" \
+  HELM_PUSH_VERSION="v0.7.1" 
+
 # Add mirror source
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   echo 'deb http://mirrors.aliyun.com/debian stretch main contrib non-free' >> /etc/apt/sources.list && \
@@ -33,11 +36,17 @@ RUN apt-get update && apt-get install -y \
   ca-certificates && \
   rm -rf /var/lib/apt/lists/* && \
   pip install pymysql==0.9.2 pyyaml==3.13 -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com && \
-  npm install -g cnpm
-
+  npm install -g cnpm 
+# install helm
+RUN   HELM_SHA256=`curl -sSL "https://mirror.azure.cn/kubernetes/helm/helm-${HELM_VERSION}-linux-amd64.tar.gz.sha256"` && \
+  wget -qO "/tmp/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
+  "https://mirror.azure.cn/kubernetes/helm/helm-${HELM_VERSION}-linux-amd64.tar.gz" && \
+  echo "${HELM_SHA256}  /tmp/helm-${HELM_VERSION}-linux-amd64.tar.gz" | sha256sum -c - && \
+  tar xzf "/tmp/helm-${HELM_VERSION}-linux-amd64.tar.gz" -C /tmp && \
+  mv /tmp/linux-amd64/helm /usr/bin/helm && \
+  # post install
+  rm -r /tmp/* && \
+  helm init -c --stable-repo-url=https://mirror.azure.cn/kubernetes/charts/ && \
+  helm plugin install --version $HELM_PUSH_VERSION https://github.com/chartmuseum/helm-push
 ADD dist /dist
 RUN npm i -g hzero-cli --registry http://nexus.saas.hand-china.com/content/groups/hzero-npm-group
-RUN curl -L -o helm-v2.14.3-linux-amd64.tar.gz https://file.choerodon.com.cn/kubernetes-helm/v2.14.3/helm-v2.14.3-linux-amd64.tar.gz && \
-  tar -zxvf helm-v2.14.3-linux-amd64.tar.gz && \
-  mv linux-amd64/helm /usr/bin/helm && \
-  rm -fr linux-amd64 && rm -fr helm-v2.14.3-linux-amd64.tar.gz
