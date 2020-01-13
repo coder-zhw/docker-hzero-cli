@@ -344,22 +344,6 @@ self.__precacheManifest = [
     "url": "/static/js/77.c6c14de8.chunk.js"
   },
   {
-    "revision": "aac895f7cfe4b647ff1268454f2f322d",
-    "url": "/static/media/icomoon.aac895f7.eot"
-  },
-  {
-    "revision": "b20fda6b275dceb4c101efae21fd069e",
-    "url": "/static/media/icomoon.b20fda6b.ttf"
-  },
-  {
-    "revision": "79c5e6cd8d40c4cb0d2787a97b1d9984",
-    "url": "/static/media/icomoon.79c5e6cd.woff"
-  },
-  {
-    "revision": "15ead12b2e77f5fef2d5e3b3bd3b6de6",
-    "url": "/static/media/icomoon.15ead12b.svg"
-  },
-  {
     "revision": "e8de9e45b671fa620e3b33a0c45983d2",
     "url": "/static/media/iconfont.e8de9e45.eot"
   },
@@ -374,6 +358,22 @@ self.__precacheManifest = [
   {
     "revision": "8890138ce696c577bd0abbd324235a9a",
     "url": "/static/media/iconfont.8890138c.svg"
+  },
+  {
+    "revision": "aac895f7cfe4b647ff1268454f2f322d",
+    "url": "/static/media/icomoon.aac895f7.eot"
+  },
+  {
+    "revision": "b20fda6b275dceb4c101efae21fd069e",
+    "url": "/static/media/icomoon.b20fda6b.ttf"
+  },
+  {
+    "revision": "79c5e6cd8d40c4cb0d2787a97b1d9984",
+    "url": "/static/media/icomoon.79c5e6cd.woff"
+  },
+  {
+    "revision": "15ead12b2e77f5fef2d5e3b3bd3b6de6",
+    "url": "/static/media/icomoon.15ead12b.svg"
   },
   {
     "revision": "2dda86ad45caee58c927e111fe3c8071",
