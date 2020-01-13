@@ -4,7 +4,8 @@ RUN apk add --no-cache \
   bash \
   curl \
   git \
-  docker
+  docker \
+  helm
 
 ADD dist /dist
 RUN npm install -g yarn && npm install -g hzero-cli --registry http://nexus.saas.hand-china.com/content/groups/hzero-npm-group
