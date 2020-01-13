@@ -37,3 +37,7 @@ RUN apt-get update && apt-get install -y \
 
 ADD dist /dist
 RUN npm i -g hzero-cli --registry http://nexus.saas.hand-china.com/content/groups/hzero-npm-group
+RUN curl -L -o helm-v2.14.3-linux-amd64.tar.gz https://file.choerodon.com.cn/kubernetes-helm/v2.14.3/helm-v2.14.3-linux-amd64.tar.gz && \
+  tar -zxvf helm-v2.14.3-linux-amd64.tar.gz && \
+  mv linux-amd64/helm /usr/bin/helm && \
+  rm -fr linux-amd64 && rm -fr helm-v2.14.3-linux-amd64.tar.gz
